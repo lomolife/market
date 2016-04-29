@@ -1,0 +1,63 @@
+{% extends 'layouts.html' %}
+
+{% block title %}我的出售{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/sells.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="sells-top ui-whitespace">
+    <div class="sells-top-push">
+        <p>把你的闲置交给我吧</p>
+        <div class="push-button ui-whitespace">
+            <a href="push">立即发布</a>
+        </div>
+    </div>
+</div>
+<div class="ui-whitespace"><div class="ui-border-t wrap"></div></div>
+<!-- 商品列表 -->
+<ul class="goods">
+    <!-- 待添加的商品 -->
+</ul>
+<!-- actionsheet -->
+<div id="actionSheet_wrap">
+    <div class="weui_mask_transition" id="mask"></div>
+    <div class="weui_actionsheet" id="weui_actionsheet">
+        <div class="weui_actionsheet_menu">
+            <div class="weui_actionsheet_cell">进入商品</div>
+            <div class="weui_actionsheet_cell">编辑</div>
+            <div class="weui_actionsheet_cell">售出</div>
+        </div>
+        <div class="weui_actionsheet_action">
+            <div class="weui_actionsheet_cell" id="actionsheet_cancel">取消</div>
+        </div>
+    </div>
+</div>
+<!-- 出售弹窗 -->
+<div class="weui_dialog_confirm" id="goo-report">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog">
+        <div class="weui_dialog_bd">售出商品后将停止显示商品信<br>息并由管理员保留信息，确定<br>要售出商品吗</div>
+        <div class="weui_dialog_ft">
+            <a href="javascript:;" class="weui_btn_dialog default" id="goo-report-cancel">取消</a>
+            <a href="javascript:;" class="weui_btn_dialog primary" id="goo-report-confirm">确定</a>
+        </div>
+    </div>
+</div>
+<!-- 出售成功弹窗 -->
+<div id="toast" style="display: none;position: relative;z-index: 100;">
+    <div class="weui_mask_transparent"></div>
+    <div class="weui_toast">
+        <i class="weui_icon_toast"></i>
+        <p class="weui_toast_content">已出售</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    var openid = "{{ session['openid'] }}";
+</script>
+<script src="{{ url_for('static', filename='dist/js/sells-min.js') }}"></script>
+{% endblock %}

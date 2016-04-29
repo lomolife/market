@@ -1,0 +1,217 @@
+body {
+    background-color: white;
+}
+.banner {
+    position: relative;
+    overflow: auto;
+    width: 100% !important;
+    z-index: 0;
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.3) 0%,
+            rgba(0, 0, 0, 0) 25%,
+            rgba(0, 0, 0, 0) 75%,
+            rgba(0, 0, 0, 0.3) 100%
+            );
+        z-index: 10;
+    }
+}
+.banner li { list-style: none; }
+.banner ul li {
+    float: left;
+    height: 180px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.banner ol {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+.banner ol li {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 0;
+    background-color: #cfcfcf;
+}
+.banner ol li.active {
+    background-color: #d03a03;
+}
+// 返回按钮
+.back {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 24px;
+    font-size: 34px;
+    color: white;
+}
+.report {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 20;
+    font-size: 34px;
+    color: rgba(0, 0, 0, 0.5);
+}
+// 三大板块布局
+.goo-top,
+.goo-center,
+.goo-bottom {
+    width: 100%;
+    padding: 10px 15px;
+    padding-top: 0;
+    box-sizing: border-box;
+}
+.goo-bottom {
+    padding-bottom: 64px;
+}
+// 几大小板块布局
+.goo-prices,
+.goo-message,
+.goo-describe-topic,
+.goo-describe,
+.goo-tags-topic,
+.goo-owner-topic,
+.goo-owner,
+.goo-ask-topic {
+    padding-top: 10px;
+}
+// 字体设置
+.goo-describe-topic,
+.goo-tags-topic,
+.goo-owner-topic,
+.goo-ask-topic {
+    font-size: 14px;
+}
+// 逐一设置
+// 价格部分
+.goo-price,
+.goo-cost {
+    display: inline;
+    vertical-align: baseline;
+}
+.goo-cost {
+    padding-left: 15px;
+    text-decoration: line-through;
+}
+// 时间地点
+.goo-message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+// 拥有者
+.goo-owner {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    & > img {
+        display: block;
+        width: 50px;
+        border-radius: 50px;
+    }
+    & > h4 {
+        padding-left: 15px;
+        & > span {
+            vertical-align: middle;
+        }
+        & > i {
+            display: inline;
+            vertical-align: middle;
+            font-size: 28px;
+        }
+    }
+}
+// 标签
+.goo-tags {
+    padding: 0 !important;
+}
+// 按钮
+.goo-action {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 5px 0;
+    z-index: 30;
+    background-color: white;
+}
+// 我想要
+.goo-want {
+    padding: 10px 20px;
+    background-color: #e53d00;
+    border-radius: 5px;
+    color: white;
+}
+// 分享提示
+.goo-share {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-image: url(/market/static/dist/img/share.png);
+    background-size: 100% 100%;
+    z-index: 50;
+}
+.goo-phone,
+.goo-sms {
+    display: block;
+}
+// actionsheet
+#actionSheet_wrap {
+    position: relative;
+    z-index: 50;
+}
+#weui_actionsheet a {
+    display: block;
+}
+// goo-report
+#goo-report {
+    display: none;
+    z-index: 80;
+    & .weui_dialog_bd {
+        padding-top: 20px;
+        text-align: center;
+    }
+}
+// ask-input
+.ask-input {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: white;
+    text-align: right;
+    display: none;
+    & .weui_cells {
+        margin-top: 0;
+    }
+    & .weui_btn_mini {
+        margin-top: 10px;
+        margin-right: 10px;
+        line-height: 2.9;
+        padding: 0 1.75em;
+        background-color: #ff4400;
+    }
+}

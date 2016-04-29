@@ -1,0 +1,33 @@
+{% extends 'layouts.html' %}
+
+{% block title %}学生市场{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/new.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="new-banner">
+    <img src="" alt="头像">
+    <br>
+    <span></span>
+</div>
+<!-- 欢迎语 -->
+<div class="new-welcome">
+    你好<br>我们是比特工场<br>这是送给你的礼物<br>希望能够喜欢 
+</div>
+<!-- 入口 -->
+<div class="new-login">
+    <div class="new-button">
+        <a href="check">学生认证</a>
+    </div>
+    <a href="index">随便看看</a>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    var openid = "{{ session['openid'] }}";
+</script>
+<script src="{{ url_for('static', filename='dist/js/new-min.js') }}"></script>
+{% endblock %}

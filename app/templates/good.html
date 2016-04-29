@@ -1,0 +1,117 @@
+{% extends 'layouts.html' %}
+
+{% block title %}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/good.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="banner">
+    <ul>
+    </ul>
+    <!-- 返回按钮 -->
+    <i class="material-icons back">keyboard_arrow_left</i>
+    <!-- 举报按钮 -->
+    <i class="ui-icon-warn report"></i>
+</div>
+<div class="goo-top ui-border-b">
+    <!-- 价格相关 -->
+    <div class="goo-prices">
+        <h1 class="goo-price ui-txt-warning"></h1>
+        <h6 class="goo-cost"></h6>
+    </div>
+    <!-- 时间地点 -->
+    <div class="goo-message">
+        <h6 class="ui-txt-muted"></h6>
+        <h6 class="ui-txt-muted"><i class="material-icons" style="vertical-align: middle;">place</i><span class="goo-place" style="vertical-align: middle;"></span></h6>
+    </div>
+</div>
+<div class="goo-center ui-border-b">
+    <!-- 描述 -->
+    <h3 class="goo-describe-topic ui-txt-info">描述</h3>
+    <h3 class="goo-describe ui-nowrap-multi"></h3>
+    <!-- 标签板块 -->
+    <h3 class="goo-tags-topic ui-txt-info">标签</h3>
+    <ul class="goo-tags push-tag-search">
+        <!-- 待加载 -->
+    </ul>
+    <!-- 拥有者 -->
+    <h3 class="goo-owner-topic ui-txt-info">主人</h3>
+    <div class="goo-owner">
+        <img src="" alt="nickname">
+        <h4><span class="goo-owner-name"></span><i id="goo-owner-sex"></i></h4>
+    </div>
+</div>
+<div class="goo-bottom ui-border-b">
+    <!-- 提问板块 -->
+    <h3 class="goo-ask-topic ui-txt-info">提问</h3>
+    <ul id="goo-ask">
+        
+    </ul>
+</div>
+<!-- 提问，分享，我想要 -->
+<ul class="ui-tiled ui-border-t goo-action">
+    <li><div class="goo-question">提问</div></li>
+    <li><div class="goo-share-button">分享</div></li>
+    <li><div class="goo-want">我想要</div></li>
+</ul>
+<!-- 提问输入框 -->
+<div class="ask-input">
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <textarea class="weui_textarea" placeholder="请输入你对东西的问题（限50个字）" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+    <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary">发送</a>
+</div>
+<!-- 分享提示 -->
+<div class="goo-share"></div>
+<!-- 我想要 actionsheet -->
+<div id="actionSheet_wrap">
+    <div class="weui_mask_transition" id="mask"></div>
+    <div class="weui_actionsheet" id="weui_actionsheet">
+        <div class="weui_actionsheet_menu">
+            <a class="weui_actionsheet_cell" href="" id="goo-phone">打电话</a>
+            <a class="weui_actionsheet_cell" href="" id="goo-sms">发短信</a>
+            <div class="weui_actionsheet_cell" id="goo-qq">QQ资询</div>
+        </div>
+        <div class="weui_actionsheet_action">
+            <div class="weui_actionsheet_cell" id="actionsheet_cancel">取消</div>
+        </div>
+    </div>
+</div>
+<!-- QQ成功复制的弹窗 -->
+<div id="toast" style="display: none;position: relative;z-index: 100;">
+    <div class="weui_mask_transparent"></div>
+    <div class="weui_toast">
+        <i class="weui_icon_toast"></i>
+        <p class="weui_toast_content">QQ已被成功复制到剪贴板</p>
+    </div>
+</div>
+<!-- 举报窗口 -->
+<div class="weui_dialog_confirm" id="goo-report">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog">
+        <div class="weui_dialog_bd">举报该商品吗</div>
+        <div class="weui_dialog_ft">
+            <a href="javascript:;" class="weui_btn_dialog default" id="goo-report-cancel">取消</a>
+            <a href="javascript:;" class="weui_btn_dialog primary" id="goo-report-confirm">确定</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://unslider.com/unslider.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.8/clipboard.min.js"></script>
+<script>
+    var ownerOpenid = "{{ session['openid'] }}";
+    var openid = "{{ openid }}";
+    var goodid = "{{ goodid }}";
+</script>
+<script src="{{ url_for('static', filename='dist/js/good-min.js') }}"></script>
+{% endblock %}

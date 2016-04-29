@@ -1,0 +1,27 @@
+@import url(layouts.less);
+
+body {
+    background-color: white;
+}
+.check {
+    background-color: white;
+    &::before {
+        display: none;
+    }
+    &::after {
+        display: none;
+    }
+}
+.check-notice {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 15px;
+    & > span {
+        font-size: 14px;
+        color: @font-gray;
+        & > a {
+            text-decoration: underline;
+            color: blue;
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{% extends 'layouts.html' %}
+
+{% block title %}我的消息{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/message.css') }}">
+{% endblock %}
+
+{% block content %}
+{% for item in response %}
+<li class="ask-item">
+    <div class="ask-item-head"><img src="{{ item['userWechat']['headimgurl'] }}" alt="nickname"></div>
+    <div class="ask-item-body">
+        <div class="good-message-owner">
+            <div class="ui-flex ui-flex-align-start">
+                <span>{{ item['userWechat']['nickname'] }}
+                {% if item['userWechat']['sex'] == 1 %}
+                <i class="ui-icon-male"></i>
+                {% else %}
+                <i class="ui-icon-female"></i>
+                {% endif %}
+                </span>
+            </div>
+            <div>{{ item['content'] }}</div>
+            <div class="ui-flex ui-flex-align-end">
+                <span class="ui-txt-info">{{ item['date'] }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="ask-item-image" style="background-image: url({{ item['picture'] }}); background-size: contain;">
+    </div>    
+</li>
+{% endfor %}
+{% endblock %}

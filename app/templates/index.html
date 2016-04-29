@@ -1,0 +1,108 @@
+{% extends 'layouts.html' %}
+
+{% block title %}学生市场{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <!-- 顶部 -->
+    <div class="index-banner">
+        <div class="index-banner-common">
+            <div>
+                <span></span>
+            </div>
+            <!-- 我的出售 -->
+            <a href="sells" data-dialog="check">
+                <span>我的出售<br><span>{{ sellNum }}</span></span>
+            </a>
+        </div>
+        <div class="index-banner-common">
+            <!-- 昵称 -->
+            <div>
+                <span></span>
+            </div>
+            <!-- 我的消息 -->
+            <a href="message" data-dialog="check">
+                <span class="index-banner-message">我的消息<br><span class="index-banner-num">{{ msgNum }}</span></span>
+            </a>
+        </div>
+        <div class="index-banner-head">
+            <!-- 头像 -->
+            <img src="{{ headimgurl }}" alt="头像" data-dialog="check">
+        </div>
+    </div>
+    <!-- 标签搜索 -->
+    <div class="weui_cells weui_cells_access">
+        <a href="search" class="weui_cell">
+            <div class="weui_cell_hd">
+                <img class="icon" src="{{ url_for('static', filename='dist/img/icon_tag.png') }}" alt="icon_tag">
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <span class="icon-word">标签搜索</span>
+            </div>
+            <div class="weui_cell_ft"></div>
+        </a>
+    </div>
+    <!-- 校园集市 -->
+    <div class="common-goods ui-border-t">
+        <img class="icon" src="{{ url_for('static', filename='dist/img/icon_jishi.png') }}" alt="集市">
+        <span class="icon-word">校园集市</span>
+    </div>
+    <div class="index-newgoods">
+        有新东西发布了
+    </div>
+    <!-- 商品列表 -->
+    <ul class="goods">
+        <!-- 待添加的商品 -->
+    </ul>
+    <!-- 加载更多 -->
+    <div class="click-more ui-txt-muted ui-border-t">点击加载更多</div>
+    <!-- 没有更多商品 -->
+    <div class="no-more ui-txt-muted ui-border-t">没有更多商品了～</div>
+</main>
+<!-- 按钮组件 -->
+<div class="touch">
+    <img src="{{ url_for('static', filename='dist/img/FA.png') }}" alt="FA">
+</div>
+<!-- 未认证弹窗 -->
+<div class="weui_dialog_confirm dialog check-dialog">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog">
+        <div class="weui_dialog_hd">
+          <strong class="weui_dialog_title"></strong>
+        </div>
+        <div class="weui_dialog_bd">未认证不可以进入，确定要认证吗？</div>
+        <div class="weui_dialog_ft">
+            <a href="javascript:;" class="weui_btn_dialog default">取消</a>
+            <a href="javascript:;" class="weui_btn_dialog primary">确定</a>
+        </div>
+    </div>
+</div>
+<!-- 修改学生认证资料弹窗 -->
+<div class="weui_dialog_confirm dialog eddit-dialog">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog">
+        <div class="weui_dialog_hd">
+          <strong class="weui_dialog_title"></strong>
+        </div>
+        <div class="weui_dialog_bd">确定要修改学生认证资料吗</div>
+        <div class="weui_dialog_ft">
+            <a href="javascript:;" class="weui_btn_dialog default">取消</a>
+            <a href="javascript:;" class="weui_btn_dialog primary">确定</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    var openid = "{{ session['openid'] }}";
+    var dialogCheck = "{{ dialogCheck }}";
+    var num = "{{ num }}";
+    var date = (new Date()).valueOf();
+</script>
+<script src="{{ url_for('static', filename='dist/js/index-min.js')}}"></script>
+{% endblock %}

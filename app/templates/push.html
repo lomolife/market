@@ -1,0 +1,144 @@
+{% extends 'layouts.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<!-- 商品提交页面 -->
+<div class="push">
+    <form action="" enctype="multipart/form-data" method="post" id="pushForm">
+        <div class="weui_cells_form">
+            <div class="weui_cell" style="background-color: white;">
+                <div class="weui_cell_bd weui_cell_primary words-container">
+                    <textarea class="weui_textarea" placeholder="请描述一下你的东西..." rows="4" name="describe" autofocus required="请输入商品的描述"></textarea>
+                    <div class="words-sign">0/200</div>
+                </div>
+            </div>
+            <div class="weui_uploader ui-whitespace" style="background-color: white;">
+                <div class="weui_uploader_bd">
+                    <ul class="weui_uploader_files push-picture">
+
+                    </ul>
+                    <div class="weui_uploader_input_wrp push-picture-button">
+                        <input class="weui_uploader_input" name="picture" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple required>
+                    </div>
+                </div>
+            </div>
+            <a class="weui_cell ui-border-b push-address" href="javascript:;" style="background-color: white; overflow: hidden;">
+                <div class="weui_cell_hd"><i class="ui-icon-pin" style="line-height: 26px;"></i></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p class="push-address-value">火之舞</p>
+                </div>
+                <div class="weui_cell_ft ui-arrowlink"></div>
+            </a>
+        </div>
+        <ul class="weui_cells ui-row">
+            <li class="ui-col ui-col-50">
+                <div class="weui_cell" style="border-right: 1px solid #dfe4e8;">
+                    <div class="weui_cell_hd"><label class="weui_label" style="width: 4em;">价格<span style="color: #B5B5B5;padding-left: 22px;">¥</span></label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" id="push-price" type="number" name="price" pattern="[0-9]*" placeholder="0.00" required="请输入价格">
+                    </div>
+                    <div class="weui_cell_ft" style="opacity: 0;width: 16px;"><i class="ui-icon-close" style="line-height: 20px;"></i></div>
+                </div>
+            </li>
+            <li class="ui-col ui-col-50">
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label" style="width: 4em;">原价<span style="color: #B5B5B5;padding-left: 22px;">¥</span></label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" id="push-cost" type="number" name="cost" pattern="[0-9]*" placeholder="0.00" required="请输入原价">
+                    </div>
+                    <div class="weui_cell_ft" style="opacity: 0;width: 16px;"><i class="ui-icon-close" style="line-height: 20px;"></i></div>
+                </div>
+            </li>
+        </ul>
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">手机</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" name="phone" type="number" pattern="[0-9]*" placeholder="请输入你的手机号（选填）" required="请输入正确的手机号">
+                </div>
+                <div class="weui_cell_ft" style="opacity: 0;width: 16px;"><i class="ui-icon-close" style="line-height: 20px;"></i></div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">QQ</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="number" name="qq" pattern="[0-9]*" placeholder="请输入你的QQ号（选填）" required="请输入正确的QQ号">
+                </div>
+                <div class="weui_cell_ft" style="opacity: 0;width: 16px;"><i class="ui-icon-close" style="line-height: 20px;"></i></div>
+            </div>
+        </div>
+        <div class="weui_cells weui_cells_access push-tag">
+            <a class="weui_cell" href="javascript:;">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>标签</p>
+                </div>
+                <div class="weui_cell_ft push-tag-value">最多选择五个标签</div>
+            </a>
+        </div>
+        <div class="push-button-box ui-whitespace">
+            <div class="push-button">
+                <a href="javascript:;">发布</a>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- 商品提交所需要的组件 -->
+<!-- 地址选择器 -->
+{% include 'modules/address-choose.html' ignore missing %}
+<!-- 商品提交所涉及的提示 -->
+{% include 'modules/push-tip.html' ignore missing %}
+<!-- 标签选择器 -->
+<div class="push-tag-choose">
+    <ul class="ui-row">
+        <li class="ui-col ui-col-100 ui-border-b">
+            <div class="push-tag-search">
+                <div class="weui_cell push-tag-search-box">
+                    <div class="weui_cell_hd">
+                        <i class="ui-icon-search" style="line-height: 20px;"></i>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" type="text" name="tag" placeholder="搜索你想要的标签" required>
+                    </div>
+                    <div class="weui_cell_ft" style="opacity: 0;width: 16px;"><i class="ui-icon-close" style="line-height: 20px;"></i></div>
+                </div>
+                <ul class="push-tag-result">
+                    <!-- 待加载 -->
+                </ul>
+            </div>
+        </li>
+        <li class="ui-col ui-col-50 push-tag-parent">
+            <ul>
+                <!-- 待加载 -->
+            </ul>
+        </li>
+        <li class="ui-col ui-col-50 push-tag-child">
+            <ul>
+                <!-- 待加载 -->
+            </ul>
+        </li>
+        <li class="ui-col ui-col-50 ui-border-t push-tag-cancel">取消</li>
+        <li class="ui-col ui-col-50 ui-border-t push-tag-ok">确定</li>
+    </ul>
+</div>
+<!-- 提交成功提示 -->
+<div id="toast" style="display: none;position:relative;z-index:100;">
+    <div class="weui_mask_transparent"></div>
+    <div class="weui_toast">
+        <i class="weui_icon_toast"></i>
+        <p class="weui_toast_content">提交成功</p>
+    </div>
+</div>
+<!-- 父子标签 -->
+<div class="search-data-tags" style="display: none;">{{ totalTags }}</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    var openid = "{{ session['openid'] }}";
+    var totalTags = document.querySelector(".search-data-tags").innerText;
+    totalTags = JSON.parse(totalTags);
+    var goodid = "{{ goodid }}" || 'new';
+</script>
+<script src="{{ url_for('static', filename='dist/js/push-min.js') }}"></script>
+<script src="{{ url_for('static', filename='dist/js/jsKeyword.min.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,105 @@
+@import url(./layouts.less);
+
+a {
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 8;
+    }
+}
+
+.index-banner {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    height: 120px;
+    padding-top: 24px;
+    background-image: url(/market/static/dist/img/topic.png);
+    background-size: 100% 100%;
+    color: white;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.5) 0%,
+            rgba(0, 0, 0, 0.2) 30%,
+            rgba(0, 0, 0, 0) 100%
+            );
+    }
+    & > div {
+        position: relative;
+        display: flex;
+        flex-grow: 1;
+        z-index: 10;
+    }
+}
+.index-banner-common {
+    flex-direction: column;
+    & > * {
+        flex-grow: 1;
+        display: flex;
+        align-items: flex-end;
+        color: white;
+        &:first-child {
+            justify-content: flex-end;
+        }
+        &:last-child {
+            text-align: center;
+            justify-content: center;
+            padding-bottom: 10px;
+        }
+    }
+}
+.index-banner-head {
+    justify-content: center;
+    align-items: flex-start;
+    & > img {
+        width: 80px;
+        height: 80px;
+        border-radius: 80px;
+        border: 2px solid white;
+    }
+}
+.index-newgoods {
+    display: none;
+    width: 100%;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #ECECEC;
+}
+
+// 各种组件
+// 按钮组件
+.touch {
+    position: fixed;
+    bottom: 24px;
+    right: 12px;
+    z-index: 10;
+}
+.touch > img {
+    display: block;
+    width: 56px;
+    height: 56px;
+    border-radius: 56px;
+    &:hover {
+        opacity: 0.5;
+    }
+}
+// 弹窗
+.dialog {
+    position: relative;
+    display: none;
+    z-index: 20;
+}

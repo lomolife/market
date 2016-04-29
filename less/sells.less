@@ -1,0 +1,60 @@
+body {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: white;
+}
+.sells-top {
+    width: 100%;
+    height: 180px;
+    box-sizing: border-box;
+    padding: 10px 15px;
+}
+.sells-top-push {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url(/market/static/dist/img/push_back.png);
+    background-size: 100% 100%;
+    color: white;
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 10;
+    }
+    & a {
+        background-color: white;
+        color: #ff4400;
+        border-radius: 4px;
+    }
+    & > p,
+    & > div {
+        z-index: 20;
+    }
+}
+.push-button {
+    background-color: transparent;
+}
+.wrap {
+    height: 1px;
+}
+// actionsheet
+#actionSheet_wrap {
+    position: relative;
+    z-index: 100;
+}
+#mask {
+    display: none;
+}
+#goo-report {
+    position: relative;
+    z-index: 100;
+}

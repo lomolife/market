@@ -1,0 +1,32 @@
+{
+  "name": "market",
+  "version": "1.0.0",
+  "description": "学生市场",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "solar@stuzone.com:/home/solar/MarketRepo"
+  },
+  "keywords": [
+    "学生市场"
+  ],
+  "author": "solar",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.7.5",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-less": "^3.0.5",
+    "gulp-minify": "0.0.11",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "less-plugin-autoprefix": "^1.5.1",
+    "less-plugin-clean-css": "^1.5.1"
+  },
+  "dependencies": {
+    "babel-preset-es2015": "^6.6.0",
+    "material-design-icons": "^2.2.3"
+  }
+}

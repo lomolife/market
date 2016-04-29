@@ -1,0 +1,131 @@
+{% extends 'layouts.html' %}
+
+{% block title %}标签搜索{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/search.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- 搜索框 -->
+<div class="push-tag-search ui-border-b">
+    <div class="weui_cell push-tag-search-box">
+        <div class="weui_cell_hd">
+            <i class="ui-icon-search" style="line-height: 20px;"></i>
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input class="weui_input" type="search" name="tag" placeholder="搜索你想要的标签">
+        </div>
+        <div class="weui_cell_ft" style="opacity: 0;width: 16px;"><i class="ui-icon-close" style="line-height: 20px;"></i></div>
+    </div>
+    <ul class="push-tag-result">
+        <!-- 待加载 -->
+    </ul>
+</div>
+<!-- 标签超市 -->
+<div class="tag-market">
+    <div class="common-goods ui-border-t">
+        <img class="icon" src="{{ url_for('static', filename='dist/img/icon_tag.png') }}" alt="标签超市">
+        <span class="icon-word">标签超市</span>
+    </div>
+    <!-- 分割线 -->
+    <div class="wrap"></div>
+    <!-- 标签容器 -->
+    <ul class="search-tag">
+        {% for key in totalTagsHTML %}
+        <li>
+            <div class="push-tag-search">
+                <div class="push-tag-choosed">{{ key }}</div>
+            </div>
+            <ul class="push-tag-search">
+                {% for tag in totalTagsHTML[key] %}
+                <li class="push-tag-choosed">{{ tag }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<!-- 搜索栏与搜索结果 -->
+<div class="search-box">
+    <ul class="ui-tiled search-menu ui-border-tb">
+        <li><div class="search-menu-tag">全部标签</div></li>
+        <li><div class="search-menu-address">全校</div></li>
+        <li><div class="search-menu-sorts">默认排序</div></li>
+    </ul>
+</div>
+<!-- 选择器部分 -->
+<div class="search-choose" data-active="none">
+    <!-- 标签选择器 -->
+    <ul class="ui-row search-choose-tag" data-active="none">
+        <li class="ui-col ui-col-50 push-tag-parent">
+            <ul>
+                <!-- 待加载 -->
+            </ul>
+        </li>
+        <li class="ui-col ui-col-50 push-tag-child">
+            <ul>
+                <!-- 待加载 -->
+            </ul>
+        </li>
+    </ul>
+    <!-- 地址选择器 -->
+    <ul class="ui-row search-choose-address" style="background-color: white;" data-active="none">
+        <li class="ui-col ui-col-50 push-address-parent">
+            <div class="ui-arrowlink ui-border-b" id="south">南区</div>
+            <div class="ui-arrowlink ui-border-b" id="north">北区</div>
+        </li>
+        <li class="ui-col ui-col-50 push-address-child">
+            <ul class="south-child">
+                <li class="ui-border-b" data-address='一二食堂之间'>一二食堂之间</li>
+                <li class="ui-border-b" data-address='火之舞'>火之舞</li>
+                <li class="ui-border-b" data-address='南一门'>南一门</li>
+                <li class="ui-border-b" data-address='南二门'>南二门</li>
+                <li class="ui-border-b" data-address='南三门'>南三门</li>
+                <li class="ui-border-b" data-address='三食堂广场'>三食堂广场</li>
+                <li class="ui-border-b" data-address='体育馆前'>体育馆前</li>
+                <li class="ui-border-b" data-address='西篮球场'>西篮球场</li>
+                <li class="ui-border-b" data-address='南区操场'>南区操场</li>
+                <li class="ui-border-b" data-address='南湖操场'>南湖操场</li>
+                <li class="ui-border-b" data-address='南湖园'>南湖园</li>
+                <li class="ui-border-b" data-address='正门广场'>正门广场</li>
+            </ul>
+            <ul class="north-child">
+                <li class="ui-border-b" data-address='美院圆楼'>美院圆楼</li>
+                <li class="ui-border-b" data-address='北区公寓篮球场'>北区公寓篮球场</li>
+                <li class="ui-border-b" data-address='教工食堂'>教工食堂</li>
+            </ul>
+        </li>
+    </ul>
+    <!-- 排序 -->
+    <ul class="search-choose-sorts" data-active="none">
+        <li>默认排序</li>
+        <li>价格从低到高</li>
+        <li>价格从高到低</li>
+        <li>最新发布</li>
+    </ul>
+</div>
+<div class="search-result" style="display: none;">
+    <!-- 商品列表 -->
+    <ul class="goods">
+        <!-- 待添加的商品 -->
+    </ul>
+    <!-- 加载更多 -->
+    <div class="click-more ui-txt-muted ui-border-t">点击加载更多</div>
+    <!-- 没有更多商品 -->
+    <div class="no-more ui-txt-muted ui-border-t">没有更多商品了～</div>
+</div>
+<!-- 父子标签 -->
+<div class="search-data-tags" style="display: none;">{{ totalTags }}</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    var totalTags = document.querySelector(".search-data-tags").innerText;
+    totalTags = JSON.parse(totalTags);
+    // 分页搜索
+    var num = 0;
+</script>
+<script src="{{ url_for('static', filename='dist/js/search-min.js') }}"></script>
+<script src="{{ url_for('static', filename='dist/js/jsKeyword.min.js') }}"></script>
+{% endblock %}
