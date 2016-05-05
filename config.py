@@ -7,6 +7,12 @@ class CommonConfig:
     SECRET_KEY = 'Fxw4JNWQMrL7HqGWcpkn'
     # 上传文件的文件夹
     UPLOAD_FOLDER = os.path.dirname(__file__) + '/app/static/uploads'
+    # 邮件设置
+    MAIL_SERVER = 'smtp.mxhichina.com'
+    MAIL_PORT = '465'
+    MAIL_USE_SSL = True
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
 
 class DevConfig(CommonConfig):
@@ -43,3 +49,6 @@ config = {
     # 默认配置的设置
     'default': DevConfig
 }
+
+# 主服务器
+server = 'market.tunnel.qydev.com'

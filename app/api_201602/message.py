@@ -1,8 +1,11 @@
 # 仅获取用户相关信息的接口
 import time
+from datetime import datetime
 from flask import jsonify, request
+from config import server
 from . import api
 from .. import mongo
+from app.modules.Email import send_email
 
 
 # 请求用户的微信信息
@@ -33,8 +36,14 @@ def datas(openid):
         try:
             mongo.db.users.update(
                 {'wechat.openid': openid},
-                {'$set': {'datas': datas, 'check': True}}
+                {'$set': {'datas': datas}}
             )
+            # 发送验证邮件
+            subject = '学生市场用户验证'
+            html = '''
+            <a href="http://{}/market/api/message/check/{}">点击此处验证邮箱</a>
+            '''.format(server, openid).strip()
+            send_email(datas['email'], subject, html)
             return jsonify(errMsg='ok')
         except Exception as e:
             print(e)
@@ -52,6 +61,20 @@ def datas(openid):
             return jsonify(errMsg='Internal Error'), 500
 
 
+# 邮箱验证
+@api.route('/message/check/<openid>')
+def check(openid):
+    try:
+        mongo.db.users.update(
+            {'wechat.openid': openid},
+            {'$set': {'check': True}}
+        )
+        return '验证成功，请在微信中使用'
+    except Exception as e:
+        print(e)
+        return jsonify(errMsg='Internal Error'), 500
+
+
 # 返回用户是否有新消息和新商品
 @api.route('/message/hasnew/<openid>/<date>')
 def hasnew(openid, date):
@@ -67,15 +90,30 @@ def hasnew(openid, date):
     try:
         Users = mongo.db.users.find_one_or_404(
             {'wechat.openid': openid},
-            {'reply': 1, '_id': 0}
+            {'reply': 1, 'wechat': 1, 'datas': 1, '_id': 0}
         )
         reply = Users.get('reply', {})
+        nickname = Users.get('wechat', {}).get('nickname', '')
+        email = Users.get('datas', {}).get('email', '')
         number = 0
         # 遍历字典，判断是否有新消息，并且记录键的个数
         for commentID in reply:
             if reply[commentID]['status'] == 'new':
                 hasnew = True
             number += 1
+        if hasnew:
+            # 发送提醒邮件
+            subject = '你在［学生市场］有了新消息'
+            html = '''
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{}同学：</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你好。</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你在学生市场的东西有了新回复，请前往学生市场查看</p>
+            <p style="text-align: right;"><span>学生市场管理员</span></p>
+            <p style="text-align: right;"><span>{}</span></p>
+            '''.format(
+                nickname, datetime.strftime(datetime.now(), '%Y年%m月%d日')
+            )
+            send_email(email, subject, html)
         # 将所有商品拿出来分析
         Goods = mongo.db.goods.find_one_or_404(
             {},

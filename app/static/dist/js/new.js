@@ -55,7 +55,7 @@
 	            // 将头像替换进去
 	            var head = document.querySelector('.new-banner img');
 	            var name = document.querySelector('.new-banner span');
-	            response = JSON.parse(responseText);
+	            var response = JSON.parse(xhr.responseText);
 	            head.src = response.message.headimgurl;
 	            name.innerText = response.message.nickname;
 	        }

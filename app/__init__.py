@@ -1,9 +1,11 @@
 from flask import Flask
 from flask.ext.pymongo import PyMongo
+from flask.ext.mail import Mail
 from config import config
 
 # 扩展实例化
 mongo = PyMongo()
+mail = Mail()
 
 
 def create_app(config_name):
@@ -11,6 +13,7 @@ def create_app(config_name):
     app.config.from_object(config[config_name])
     # 扩展实例应用到 app
     mongo.init_app(app)
+    mail.init_app(app)
 
     # 加载蓝图
     from .main import main as main_blueprint  # 主要模块

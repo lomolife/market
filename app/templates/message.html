@@ -28,7 +28,8 @@
         </div>
     </div>
     <div class="ask-item-image" style="background-image: url({{ item['picture'] }}); background-size: contain;">
-    </div>    
+    </div>
+    <a class="ask-link" href="/market/user/good/{{ item['openid'] }}/{{ item['goodid'] }}"></a>
 </li>
 {% endfor %}
 {% endblock %}

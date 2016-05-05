@@ -9,14 +9,14 @@
 {% block content %}
 <div class="weui_cells weui_cells_form check">
     <form action="" enctype="multipart/form-data" method="post" id="checkForm">
-        <div class="weui_cell">
+        <div class="weui_cell" id="school-box">
             <div class="weui_cell_hd"><label class="weui_label">学号</label></div>
             <div class="weui_cell_bd weui_cell_primary">
                 <input class="weui_input" name="schoolID" type="number" pattern="[0-9]*" placeholder="你的大学学号" required="请输入你的大学学号">
             </div>
             <div class="weui_cell_ft" style="opacity: 0;width: 16px;"><i class="ui-icon-close" style="line-height: 20px;"></i></div>
         </div>
-        <div class="weui_cell">
+        <div class="weui_cell" id="pwd-box">
             <div class="weui_cell_hd"><label class="weui_label">密码</label></div>
             <div class="weui_cell_bd weui_cell_primary">
                 <input class="weui_input" name="password" type="password" placeholder="你的教务系统密码" required="请输入你的教务系统密码">
@@ -37,7 +37,7 @@
             </div>
             <div class="weui_cell_ft" style="opacity: 0;width: 16px;"><i class="ui-icon-close" style="line-height: 20px;"></i></div>
         </div>
-        <div class="weui_cell">
+        <div class="weui_cell" id="email-box">
             <div class="weui_cell_hd"><label class="weui_label">邮箱</label></div>
             <div class="weui_cell_bd weui_cell_primary">
                 <input class="weui_input" type="email" name="email" placeholder="你的常用邮箱" required="请输入你正确的常用邮箱">

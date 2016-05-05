@@ -4,3 +4,5 @@ node_modules
 *.css
 es5
 design
+material-design-icons
+uploads

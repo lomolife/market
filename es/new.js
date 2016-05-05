@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             // 将头像替换进去
             let head = document.querySelector('.new-banner img');
             let name = document.querySelector('.new-banner span');
-            response = JSON.parse(responseText);
+            let response = JSON.parse(xhr.responseText);
             head.src = response.message.headimgurl;
             name.innerText = response.message.nickname;
         }

@@ -97,6 +97,10 @@
 	                        (0, _keys2.default)(response.datas).forEach(function (key, index) {
 	                            form[key]['value'] = response.datas[key];
 	                        });
+	                        // 取消显示已填表单
+	                        $('#school-box').style.display = 'none';
+	                        $('#pwd-box').style.display = 'none';
+	                        $('#email-box').style.display = 'none';
 	                        form.schoolID.setAttribute('readonly', true);
 	                        form.password.setAttribute('readonly', true);
 	                        form.address.setAttribute('readonly', true);

@@ -1,4 +1,5 @@
 from flask import render_template, session, redirect, url_for, jsonify, json
+import collections
 from . import user
 from .. import mongo
 
@@ -91,6 +92,7 @@ def search():
         # 搜索所有的父子标签
         try:
             totalTags = mongo.db.totalTags.find_one_or_404({}, {'_id': 0})
+            print(totalTags)
             totalTagsHTML = totalTags
             totalTags = json.dumps(totalTags, ensure_ascii=False)
             return render_template(
@@ -159,5 +161,6 @@ def message():
                                 i['userWechat'] = userOne.get('wechat', {})
                                 i['picture'] = good['picture'][0]
                                 i['goodid'] = good['id']
+                                i['openid'] = good['id'][0:-14]
                                 response.append(i)
         return render_template('message.html', response=response)
