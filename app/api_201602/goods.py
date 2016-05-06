@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-import datetime
+from datetime import datetime
 import time
 import hashlib
 import random
@@ -22,7 +22,7 @@ def allowed_file(filename):
 @api.route('/goods/create/<openid>', methods=['POST'])
 def create(openid):
     # 生成时间
-    date = datetime.datetime.now()
+    date = datetime.now()
     # 格式化为数据库存储字符串
     dateString = date.strftime("%Y-%m-%d %H:%M")
     # 格式化为文件夹名
@@ -338,9 +338,9 @@ def setCommont(openid, goodid):
     comment['userID'] = request.form['userID']
     comment['replyID'] = request.form['replyID']
     comment['content'] = request.form['content']
-    comment['date'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    comment['date'] = datetime.now().strftime("%Y-%m-%d %H:%M")
     comment['id'] = request.form['userID'] + request.form['replyID'] + \
-        datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+        datetime.now().strftime("%Y%m%d%H%M%S")
     try:
         Users = mongo.db.users.find_one_or_404(
             {'wechat.openid': comment['replyID']},
