@@ -3,7 +3,7 @@
 from flask.ext.mail import Message
 from threading import Thread
 from manage import app
-from app import mail
+from .. import mail
 
 
 def send_async_email(app, msg):

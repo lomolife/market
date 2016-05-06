@@ -1,7 +1,7 @@
 from flask import redirect, request, url_for, session
 from . import wechat
 from .. import mongo
-from app.modules.WechatAccess import Token
+from ..modules.WechatAccess import Token
 
 token = Token()
 
