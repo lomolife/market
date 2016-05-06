@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                     sexHTML = '<i class="ui-icon-female"></i>';
                 }
                 $$('#goo-ask').appendChild((parseToDOM(`
-                    <li class="ask-item">
+                    <li class="ask-item ${userid}">
                         <div class="ask-item-head"><img src="${userMessage.headimgurl}" alt="nickname"></div>
                         <div class="ask-item-body">
                             <div class="good-message-owner">
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                         html.setAttribute('data-userid', content.userID);
                         html.setAttribute('data-replyid', content.replyID);
                     }
-                    $$('.ask-item-body-content').appendChild(html);
+                    $$('.${userid} .ask-item-body-content').appendChild(html);
                 });
                 // 给可回复的 li 标签增加点击事件
                 $$('#goo-ask').addEventListener('click', function (event) {
