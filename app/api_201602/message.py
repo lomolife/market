@@ -3,7 +3,7 @@
 import time
 from datetime import datetime
 from flask import jsonify, request
-from config import server
+from ...config import server
 from . import api
 from .. import mongo
 from ..modules.Email import send_email
