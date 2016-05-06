@@ -209,8 +209,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
     });
     // 返回键
     $$('.back').addEventListener('click', function (event) {
-        if (document.referrer !== 'http://market.tunnel.qydev.com/market/user/sells') {
-            location.href = 'http://market.tunnel.qydev.com/market/user/index';
+        if (document.referrer !== 'http://stuzone.com:8000/market/user/sells') {
+            location.href = 'http://stuzone.com:8000/market/user/index';
         }
     });
     // 举报商品
