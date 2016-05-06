@@ -6,7 +6,7 @@ from flask import jsonify, request
 from ...config import server
 from . import api
 from .. import mongo
-from ..modules.Email import send_email
+from ...manage import send_email
 
 
 # 请求用户的微信信息
