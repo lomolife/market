@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+<ul class="ask">
 {% for item in response %}
 <li class="ask-item">
     <div class="ask-item-head"><img src="{{ item['userWechat']['headimgurl'] }}" alt="nickname"></div>
@@ -32,4 +33,5 @@
     <a class="ask-link" href="/market/user/good/{{ item['openid'] }}/{{ item['goodid'] }}"></a>
 </li>
 {% endfor %}
+</ul>
 {% endblock %}
