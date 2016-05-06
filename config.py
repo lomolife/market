@@ -51,4 +51,4 @@ config = {
 }
 
 # 主服务器
-server = 'market.tunnel.qydev.com'
+server = 'stuzone.com:8000'
