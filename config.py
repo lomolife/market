@@ -12,8 +12,8 @@ class CommonConfig:
     MAIL_SERVER = 'smtp.mxhichina.com'
     MAIL_PORT = '465'
     MAIL_USE_SSL = True
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    MAIL_USERNAME = 'market@stuzone.com'
+    MAIL_PASSWORD = 'love_bit1314'
 
 
 class DevConfig(CommonConfig):
