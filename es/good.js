@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                         html.setAttribute('data-userid', content.userID);
                         html.setAttribute('data-replyid', content.replyID);
                     }
-                    $$('.${userid} .ask-item-body-content').appendChild(html);
+                    $$(`.${userid} .ask-item-body-content`).appendChild(html);
                 });
                 // 给可回复的 li 标签增加点击事件
                 $$('#goo-ask').addEventListener('click', function (event) {
