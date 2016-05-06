@@ -23,7 +23,7 @@ class DevConfig(CommonConfig):
     wechatConfig = {
         'appid': 'wxf7f810a7869d2c09',
         'redirect_url': quote(
-            'http://market.tunnel.qydev.com/market/wechat/auth'
+            'http://stuzone.com:8000/market/wechat/auth'
         ),
         'scope': 'snsapi_userinfo',
         'token': 'dwcJAM9WTiZyfg8qTZJcnprmKsCbsA',
