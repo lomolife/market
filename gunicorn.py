@@ -1,1 +1,1 @@
-from manage import app
+from .manage import app
