@@ -229,23 +229,35 @@ export function pushForm(event, fileList) {
     let errorMsg = "";
     // 表单验证是否通过
     if (!document.forms[0].checkValidity()) {
+        let forms = Array.from(document.forms[0]);
         $('.push-tip').style.display = 'block';
         // 未通过则检查
-        Array.from(document.forms[0]).forEach( function(input, index) {
+        // Array.from(document.forms[0]).forEach( function(input, index) {
+        //     if (!input.checkValidity()) {
+        //         (function (input, index) {
+        //             setTimeout(function (event) {
+        //                 $('#push-tip').innerHTML = input.getAttribute('required') || input.validationMessage;
+        //             }, index*1500);
+        //         })(input, index);
+        //     };
+        //     if (index === document.forms[0].length-1) {
+        //         setTimeout(function (event) {
+        //             $('.push-tip').style.display = 'none';
+        //             $('#push-tip').innerHTML = "";
+        //         }, index*1500);
+        //     }
+        // });
+        for (var i = 0; i < forms.length; i++) {
+            let input = forms[i];
             if (!input.checkValidity()) {
-                (function (input, index) {
-                    setTimeout(function (event) {
-                        $('#push-tip').innerHTML = input.getAttribute('required') || input.validationMessage;
-                    }, index*1500);
-                })(input, index);
-            };
-            if (index === document.forms[0].length-1) {
-                setTimeout(function (event) {
+                $('#push-tip').innerHTML = input.getAttribute('required') || input.validationMessage;
+                setTimeout(function () {
                     $('.push-tip').style.display = 'none';
                     $('#push-tip').innerHTML = "";
-                }, index*1500);
-            }
-        });
+                }, 1500);
+                break;
+            };
+        }
         return;
     }
     // 给表单增加地址
