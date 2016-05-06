@@ -121,6 +121,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
                             };
                             xhr.send(form);
                         };
+                    } else {
+                        $$('.goo-question').style.color = '#bbb';
                     }
                 });
             });
