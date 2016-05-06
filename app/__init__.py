@@ -2,7 +2,7 @@
 from flask import Flask
 from flask.ext.pymongo import PyMongo
 from flask.ext.mail import Mail
-from config import config
+from ..config import config
 
 # 扩展实例化
 mongo = PyMongo()

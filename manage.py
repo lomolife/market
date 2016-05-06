@@ -5,8 +5,8 @@ import urllib.request
 import json
 from threading import Timer
 from flask.ext.script import Manager, Shell
-from app import create_app
-from config import config
+from .app import create_app
+from .config import config
 
 wechatConfig = config.get('default', '').wechatConfig
 

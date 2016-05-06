@@ -8,7 +8,7 @@ from flask import jsonify, request
 from . import api
 from .. import mongo
 from werkzeug import secure_filename
-from config import config
+from ...config import config
 
 
 # 检验文件安全不

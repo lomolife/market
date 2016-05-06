@@ -2,7 +2,7 @@
 import hashlib
 from flask import request
 from . import main
-from config import config
+from ...config import config
 
 wechatConfig = config.get('default', '').wechatConfig
 

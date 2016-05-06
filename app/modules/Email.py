@@ -2,7 +2,7 @@
 # 邮件服务模块
 from flask.ext.mail import Message
 from threading import Thread
-from manage import app
+from ...manage import app
 from .. import mail
 
 

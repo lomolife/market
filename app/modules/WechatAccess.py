@@ -6,7 +6,7 @@ import string
 import hashlib
 import urllib.request
 import json
-from config import config
+from ...config import config
 
 wechatConfig = config.get('default', '').wechatConfig
 
