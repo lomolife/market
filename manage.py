@@ -6,7 +6,7 @@ import json
 from threading import Timer
 from flask.ext.script import Manager, Shell
 # from flask.ext.mail import Message
-from .app import create_app
+from .app import app
 from .config import config
 
 wechatConfig = config.get('default', '').wechatConfig
@@ -32,7 +32,6 @@ getAccessTocken()
 Timer(resultAccess['expires_in'], getAccessTocken)
 
 # 根据配置文件的选择创建实例
-app = create_app(os.getenv('FLSAK_CONFIG') or 'default')
 manager = Manager(app)
 
 

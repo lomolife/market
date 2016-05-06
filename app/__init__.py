@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 from flask import Flask
 from flask.ext.pymongo import PyMongo
 from flask.ext.mail import Mail
@@ -30,3 +31,5 @@ def create_app(config_name):
     app.register_blueprint(api_blueprint, url_prefix='/market/api')
 
     return app
+
+app = create_app(os.getenv('FLSAK_CONFIG') or 'default')
