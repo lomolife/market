@@ -2,7 +2,7 @@
 # 邮件服务模块
 from flask.ext.mail import Message
 from threading import Thread
-from .. import mail, app
+from .. import mail
 
 
 def send_async_email(app, msg):
@@ -17,6 +17,7 @@ def send_email(to, subject, html, **kwargs):
         recipients=[to]
     )
     msg.html = html
+    from .. import app
     thr = Thread(target=send_async_email, args=[app, msg])
     thr.start()
     mail.send(msg)
