@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # 获取Access_Token，JSD-SDK验证
 import time
 import random

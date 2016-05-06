@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # 邮件服务模块
 from flask.ext.mail import Message
 from threading import Thread

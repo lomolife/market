@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # 仅获取用户相关信息的接口
 import time
 from datetime import datetime

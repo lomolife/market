@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from pymongo import MongoClient
 from bson.son import SON
 
