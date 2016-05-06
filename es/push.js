@@ -124,6 +124,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
     $('.push-button a').addEventListener('click', function (event) {
         push.pushForm(event, fileList);
     });
+    // 提示关闭事件
+    $('.push-tip ui-icon-close').addEventListener('click', function (event) {
+        $('.push-tip').style.display = 'none';
+        $('#push-tip').innerHTML = "";
+    });
     window.onerror = function (errorMsg, url, lineNumber) {
         alert('Error: ' + errorMsg + ' Script: ' + url + ' Line: ' + lineNumber);
     };
