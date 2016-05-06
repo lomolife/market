@@ -22,7 +22,7 @@ def create_app(config_name):
     from .user import user as user_blueprint  # 用户模块
     from .api_201602 import api as api_blueprint  # api模块
     # 注册蓝图
-    app.register_blueprint(main_blueprint, url_prefix='/market')
+    app.register_blueprint(main_blueprint, url_prefix='/')
     app.register_blueprint(wechat_blueprint, url_prefix='/market/wechat')
     # app.register_blueprint(admin_blueprint, url_prefix='/market/admin')
     app.register_blueprint(user_blueprint, url_prefix='/market/user')

@@ -7,6 +7,7 @@ wechatConfig = config.get('default', '').wechatConfig
 
 
 @main.route('/')
+@main.route('/market')
 def index():
     # 微信服务器接入验证
     token, timestamp, nonce, signature = wechatConfig['token'], \
