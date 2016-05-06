@@ -9,6 +9,7 @@ from . import api
 from .. import mongo
 from werkzeug import secure_filename
 from ...config import config
+from ..modules.Email import send_email
 
 
 # 检验文件安全不
@@ -341,6 +342,24 @@ def setCommont(openid, goodid):
     comment['id'] = request.form['userID'] + request.form['replyID'] + \
         datetime.datetime.now().strftime("%Y%m%d%H%M%S")
     try:
+        Users = mongo.db.users.find_one_or_404(
+            {'wechat.openid': comment['replyID']},
+            {'reply': 1, 'wechat': 1, 'datas': 1, '_id': 0}
+        )
+        email = Users.get('datas', {}).get('email', '')
+        nickname = Users.get('wechat', {}).get('nickname', '')
+        # 发送提醒邮件
+        subject = '你在［学生市场］有了新消息'
+        html = '''
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{}同学：</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你好。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你在学生市场的东西有了新回复，请前往学生市场查看</p>
+        <p style="text-align: right;"><span>学生市场管理员</span></p>
+        <p style="text-align: right;"><span>{}</span></p>
+        '''.format(
+            nickname, datetime.strftime(datetime.now(), '%Y年%m月%d日')
+        )
+        send_email(email, subject, html)
         updateComment = {}
         # 判断是否是物主回复
         if comment['userID'] == openid:

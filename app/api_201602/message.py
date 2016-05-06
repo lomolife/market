@@ -94,27 +94,27 @@ def hasnew(openid, date):
             {'reply': 1, 'wechat': 1, 'datas': 1, '_id': 0}
         )
         reply = Users.get('reply', {})
-        nickname = Users.get('wechat', {}).get('nickname', '')
-        email = Users.get('datas', {}).get('email', '')
+        # nickname = Users.get('wechat', {}).get('nickname', '')
+        # email = Users.get('datas', {}).get('email', '')
         number = 0
         # 遍历字典，判断是否有新消息，并且记录键的个数
         for commentID in reply:
             if reply[commentID]['status'] == 'new':
                 hasnew = True
             number += 1
-        if hasnew:
-            # 发送提醒邮件
-            subject = '你在［学生市场］有了新消息'
-            html = '''
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{}同学：</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你好。</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你在学生市场的东西有了新回复，请前往学生市场查看</p>
-            <p style="text-align: right;"><span>学生市场管理员</span></p>
-            <p style="text-align: right;"><span>{}</span></p>
-            '''.format(
-                nickname, datetime.strftime(datetime.now(), '%Y年%m月%d日')
-            )
-            send_email(email, subject, html)
+        # if hasnew:
+        #     # 发送提醒邮件
+        #     subject = '你在［学生市场］有了新消息'
+        #     html = '''
+        #     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{}同学：</p>
+        #     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你好。</p>
+        #     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你在学生市场的东西有了新回复，请前往学生市场查看</p>
+        #     <p style="text-align: right;"><span>学生市场管理员</span></p>
+        #     <p style="text-align: right;"><span>{}</span></p>
+        #     '''.format(
+        #         nickname, datetime.strftime(datetime.now(), '%Y年%m月%d日')
+        #     )
+        #     send_email(email, subject, html)
         # 将所有商品拿出来分析
         Goods = mongo.db.goods.find_one_or_404(
             {},
