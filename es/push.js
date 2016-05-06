@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         push.pushForm(event, fileList);
     });
     // 提示关闭事件
-    $('.push-tip ui-icon-close').addEventListener('click', function (event) {
+    $('.push-tip .ui-icon-close').addEventListener('click', function (event) {
         $('.push-tip').style.display = 'none';
         $('#push-tip').innerHTML = "";
     });
