@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 $('#phone-box input').required = false;
                 $('#qq-box input').required = false;
                 $('.push-address input').required = false;
+                // 邮箱
+                $('#email-box').className += ' lastView';
             } else {
                 // 加载默认项
                 let form  = document.forms[0];
@@ -31,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 $('#pwd-box').style.display = 'none';
                 $('#email-box').style.display = 'none';
                 // 交易地点下划线
-                
+                $('.push-address').className += ' lastView';
                 form.schoolID.setAttribute('readonly', true);
                 form.password.setAttribute('readonly', true);
                 form.address.setAttribute('readonly', true);
