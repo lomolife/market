@@ -121,8 +121,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
                             };
                             xhr.send(form);
                         };
-                    } else {
-                        $$('.goo-question').style.color = '#bbb';
                     }
                 });
             });
@@ -197,6 +195,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 xhr.send(form);
             };
         });
+    } else {
+        $$('.goo-question').style.color = '#bbb';
     }
     // 给分享按钮绑定事件
     $$('.goo-share-button').addEventListener('click', function (event) {
