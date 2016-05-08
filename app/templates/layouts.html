@@ -17,7 +17,8 @@
 <body>
     {% block content %}
     {% endblock %}
+    {% block script %}
+    {% endblock %}
+    <script src="{{ url_for('static', filename='dist/js/bundle-min.js') }}"></script>
 </body>
-{% block script %}
-{% endblock %}
 </html>
