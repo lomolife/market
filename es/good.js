@@ -197,6 +197,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         });
     } else {
         $$('.goo-question').style.color = '#bbb';
+        $$('.goo-action').style.display = 'none';
     }
     // 给分享按钮绑定事件
     $$('.goo-share-button').addEventListener('click', function (event) {
