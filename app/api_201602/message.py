@@ -45,6 +45,7 @@ def datas(openid):
             }
             headers = {'content-type': 'application/json'}
             r = requests.post(url, data=json.dumps(payload), headers=headers)
+            print(r.text)
             if r.text == '20000':
                 check = True
                 mongo.db.users.update(
@@ -55,7 +56,6 @@ def datas(openid):
             else:
                 check = False
                 return jsonify(errMsg='学号密码不匹配')
-            return jsonify(errMsg='ok')
         except Exception as e:
             print(e)
             return jsonify(errMsg='Internal Error'), 500
