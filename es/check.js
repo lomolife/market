@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                     $('.push-tip').style.display = 'block';
                     $('#push-tip').innerHTML = response.errMsg;
                     setTimeout(function () {
-                        $('.push-tip').style.display = 'block';
+                        $('.push-tip').style.display = 'none';
                         $('#push-tip').innerHTML = '';
                     }, 1500);
                 }
