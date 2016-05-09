@@ -39,6 +39,6 @@ totalTags = SON(
 # 插入父标签和子标签列表
 db.totalTags.insert_one(totalTags).inserted_id
 # 数据库插入
-# db.users.insert_one({}).inserted_id
-# db.goods.insert_one({}).inserted_id
-# db.tags.insert_one({}).inserted_id
+db.users.insert_one({}).inserted_id
+db.goods.insert_one({}).inserted_id
+db.tags.insert_one({}).inserted_id
