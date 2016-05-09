@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                     // 则进入编辑页面
                     location.href = `/market/user/push/edit/${openid}/${goodid}`;
                 }
-                if (event.target.innerText === '售出') {
+                if (event.target.innerText === '售出' or event.target.innerText === '删除') {
                     // 显示确定窗口
                     $('#goo-report').style.display = 'block';
                         // 出售确定窗口事件

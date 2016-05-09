@@ -21,7 +21,7 @@ export function chooseImage () {
 export function checkPrice (event) {
     let number = this.value;
     if (number.length > 5) {
-        $('#push-tip').innerHTML = '不要超过5位数，太贵不会有人买哒～';
+        $('#push-tip').innerHTML = '请输入五位数以内的数字';
         $('.push-tip').style.display = 'block';
         this.value = null;
         setTimeout(function () {
