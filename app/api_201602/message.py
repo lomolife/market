@@ -45,8 +45,7 @@ def datas(openid):
             }
             headers = {'content-type': 'application/json'}
             r = requests.post(url, data=json.dumps(payload), headers=headers)
-            print(r.text)
-            if r.text == '20000':
+            if r.text.get('status') == 20000:
                 check = True
                 mongo.db.users.update(
                     {'wechat.openid': openid},
