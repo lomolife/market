@@ -34,14 +34,18 @@
     <ul class="search-tag">
         {% for key in totalTagsHTML %}
         <li>
-            <div class="push-tag-search">
+            {# <div class="push-tag-search">
                 <div class="push-tag-choosed">{{ key }}</div>
             </div>
             <ul class="push-tag-search">
                 {% for tag in totalTagsHTML[key] %}
                 <li class="push-tag-choosed">{{ tag }}</li>
                 {% endfor %}
-            </ul>
+            </ul> #}
+            <div class="search-tag-parent">{{ key }}</div>
+            {% for tag in totalTagsHTML[key] %}
+            <div>{{ tag }}</div>
+            {% endfor %}
         </li>
         {% endfor %}
     </ul>
