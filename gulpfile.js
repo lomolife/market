@@ -38,35 +38,35 @@ gulp.task('es6toes5', () => {
 });
 
 gulp.task('estojs', () => {
-    // var files = ['index', 'check', 'good', 'new', 'push', 'search', 'sells'];
-    // files.forEach( function(file, index) {
-    //     var input = 'app/static/dist/js/es5/' + file + '.js';
-    //     var output = file + '.js';
-    //     gulp.src(input)
-    //         .pipe(webpack({
-    //             output: {
-    //                 filename: output
-    //             }
-    //         }))
-    //         .pipe(minify({
-    //             compress: true
-    //         }))
-    //         .pipe(sourcemaps.init({loadMaps: true}))
-    //         .pipe(sourcemaps.write("."))
-    //         .pipe(gulp.dest('app/static/dist/js'));
-    // });    
-    return gulp.src('app/static/dist/js/es5/*.js').
-        pipe(webpack({
-            output: {
-                filename: 'bundle.js'
-            }
-        }))
-        .pipe(minify({
-            compress: true
-        }))
-        .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest('app/static/dist/js'));
+    var files = ['index', 'check', 'good', 'new', 'push', 'search', 'sells'];
+    files.forEach( function(file, index) {
+        var input = 'app/static/dist/js/es5/' + file + '.js';
+        var output = file + '.js';
+        gulp.src(input)
+            .pipe(webpack({
+                output: {
+                    filename: output
+                }
+            }))
+            .pipe(minify({
+                compress: true
+            }))
+            .pipe(sourcemaps.init({loadMaps: true}))
+            .pipe(sourcemaps.write("."))
+            .pipe(gulp.dest('app/static/dist/js'));
+    });    
+    // return gulp.src('app/static/dist/js/es5/*.js').
+    //     pipe(webpack({
+    //         output: {
+    //             filename: 'bundle.js'
+    //         }
+    //     }))
+    //     .pipe(minify({
+    //         compress: true
+    //     }))
+    //     .pipe(sourcemaps.init({loadMaps: true}))
+    //     .pipe(sourcemaps.write("."))
+    //     .pipe(gulp.dest('app/static/dist/js'));
 });
 
 gulp.task('default', ['lesstocss', 'es6toes5']);

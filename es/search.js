@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 点击标签超市
     $('.search-tag').addEventListener('click', function (event) {
         // 如果是子项
-        if (event.target.tagName.toUpperCase() === 'LI' && event.target.className === 'push-tag-choosed') {
+        if (event.target.className === 'search-tag-choosed') {
             // 显示搜索选项，隐藏标签超市，搜索框的值设置
             $('.search-box').style.display = 'block';
             $('.tag-market').style.display = 'none';
