@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 # 仅获取用户相关信息的接口
 import time
+import requests
+import json
 from flask import jsonify, request
 from ...config import server
 from . import api
@@ -34,16 +36,25 @@ def datas(openid):
         for key in datas:
             datas[key] = datas[key][0]
         try:
-            mongo.db.users.update(
-                {'wechat.openid': openid},
-                {'$set': {'datas': datas}}
-            )
-            # 发送验证邮件
-            subject = '学生市场用户验证'
-            html = '''
-            <a href="http://{}/market/api/message/check/{}">点击此处验证邮箱</a>
-            '''.format(server, openid).strip()
-            send_email(datas['email'], subject, html)
+            # 请求学校服务器
+            url = 'http://localhost/zixunminda/AcademyAuth/api/api.php' \
+                + '?type=academy_auth'
+            payload = {
+                "para0": datas.get('schoolID', ''),
+                "para1": datas.get('password', '')
+            }
+            headers = {'content-type': 'application/json'}
+            r = requests.post(url, data=json.dumps(payload), headers=headers)
+            if r.text == '20000':
+                check = True
+                mongo.db.users.update(
+                    {'wechat.openid': openid},
+                    {'$set': {'datas': datas, 'check': check}}
+                )
+                return jsonify(errMsg='ok')
+            else:
+                check = False
+                return jsonify(errMsg='学号密码不匹配')
             return jsonify(errMsg='ok')
         except Exception as e:
             print(e)

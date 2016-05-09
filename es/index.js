@@ -95,11 +95,11 @@ document.addEventListener('DOMContentLoaded', function () {
         xhr.send();
     });
     // 
-    $('.index-banner-head').addEventListener('click', function (event) {
-        if (dialogCheck === 'true') {
-            $('.eddit-dialog').style.display = 'block';
-        }
-    });
+    // $('.index-banner-head').addEventListener('click', function (event) {
+    //     if (dialogCheck === 'true') {
+    //         $('.eddit-dialog').style.display = 'block';
+    //     }
+    // });
     $('.eddit-dialog .default').addEventListener('click', function (event) {
         $('.eddit-dialog').style.display = 'none';
     });
