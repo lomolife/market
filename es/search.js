@@ -334,6 +334,7 @@ document.addEventListener('DOMContentLoaded', function () {
     $('.search-tag').addEventListener('click', function (event) {
         // 如果是子项
         if (event.target.className.toLowerCase() === 'ui-nowrap ui-whitespace search-tag-choosed') {
+            location.href = location.href + '#' + event.target.innerText;
             // 显示搜索选项，隐藏标签超市，搜索框的值设置
             $('.search-box').style.display = 'block';
             $('.tag-market').style.display = 'none';
