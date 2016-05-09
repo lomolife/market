@@ -1,3 +1,5 @@
+{% from 'modules/weui.html' import toast, loadingToast %}
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -17,8 +19,12 @@
 <body>
     {% block content %}
     {% endblock %}
+    {# 页面上的 Toast #}
+    {{ toast() }}
+    {# 页面上的loadingToast #}
+    {{ loadingToast() }}
     {% block script %}
     {% endblock %}
-    <script src="{{ url_for('static', filename='dist/js/bundle-min.js') }}"></script>
+    {# // <script src="{{ url_for('static', filename='dist/js/bundle-min.js') }}"></script> #}
 </body>
 </html>
