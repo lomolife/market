@@ -174,7 +174,7 @@ def person(openid):
         try:
             # 获得商品ID序列和头像的文档
             Users = mongo.db.users.find_one_or_404(
-                {'wechat.openid': session['openid']},
+                {'wechat.openid': openid},
                 {'goods': 1, 'wechat': 1, 'check': 1, 'reply': 1, '_id': 0}
             )
             # 获得所有商品的文档
