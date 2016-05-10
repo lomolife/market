@@ -174,6 +174,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
                     }
                 });
             });
+        } else {
+            location.href = '/market/404';
         }
     };
     xhr.send();
