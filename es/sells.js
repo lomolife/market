@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                     // 则进入编辑页面
                     location.href = `/market/user/push/edit/${openid}/${goodid}`;
                 }
-                if (event.target.innerText === '售出' || event.target.innerText === '删除') {
+                if (event.target.innerText === '售出') {
                     // 显示确定窗口
                     $('#goo-report').style.display = 'block';
                         // 出售确定窗口事件
@@ -64,6 +64,34 @@ document.addEventListener('DOMContentLoaded', function (event) {
                                     $('#toast').style.display = 'block';
                                     setTimeout(function () {
                                         $('#toast').style.display = 'none';
+                                    }, 2000);
+                                    // 删除节点
+                                    goodElement.parentNode.parentNode.removeChild(goodElement.parentNode);
+                                    $('#mask').style.display = 'none';
+                                    $('#mask').className = 'weui_mask_transition';
+                                }
+                            };
+                            xhr.send();
+                        });
+                }
+                if (event.target.innerText === '删除') {
+                    // 显示确定窗口
+                    $('#goo-delete-report').style.display = 'block';
+                        // 出售确定窗口事件
+                        $('#goo-delete-report-cancel').addEventListener('click', function (event) {
+                            $('#goo-delete-report').style.display = 'none';
+                        });
+                        $('#goo-delete-report-confirm').addEventListener('click', function (event) {
+                            // 执行出售操作，Ajax
+                            let xhr = new XMLHttpRequest();
+                            xhr.open('DELETE', `/market/api/good/${openid}/${goodid}`);
+                            xhr.onreadystatechange = function () {
+                                if (xhr.readyState === 4 && xhr.status === 200) {
+                                    // 显示已完成的弹窗
+                                    $('#goo-delete-report').style.display = 'none';
+                                    $('#deleteToast').style.display = 'block';
+                                    setTimeout(function () {
+                                        $('#deleteToast').style.display = 'none';
                                     }, 2000);
                                     // 删除节点
                                     goodElement.parentNode.parentNode.removeChild(goodElement.parentNode);
