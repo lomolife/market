@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 let userid = comment[0];
                 let userMessage = comment[2];
                 let sexHTML;
+                let firstCommentNum, firstComment;
                 if (userMessage.sex == 1) {
                     sexHTML = '<i class="ui-icon-male"></i>';
                 } else {
@@ -123,6 +124,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
                         };
                     }
                 });
+                // 给第一个消息特殊处理
+                firstCommentNum = ($$('.ask-item-body-content > li:first-child').innerText).indexOf(' : ');
+                firstComment = ($$('.ask-item-body-content > li:first-child').innerText).slice(firstCommentNum + 3);
+                $$('.ask-item-body-content > li:first-child').innerText = firstComment;
             });
             }
             // 打电话被加载
