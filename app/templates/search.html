@@ -3,7 +3,7 @@
 {% block title %}标签搜索{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/search.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/search.css') }}?232">
 {% endblock %}
 
 {% block content %}
@@ -130,6 +130,6 @@
     // 分页搜索
     var num = 0;
 </script>
-<script src="{{ url_for('static', filename='dist/js/search-min.js') }}"></script>
+<script src="{{ url_for('static', filename='dist/js/search-min.js') }}?23"></script>
 <script src="{{ url_for('static', filename='dist/js/jsKeyword.min.js') }}"></script>
 {% endblock %}

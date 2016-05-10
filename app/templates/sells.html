@@ -3,7 +3,7 @@
 {% block title %}我的出售{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/sells.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/sells.css') }}?232">
 {% endblock %}
 
 {% block content %}
@@ -60,5 +60,5 @@
 <script>
     var openid = "{{ session['openid'] }}";
 </script>
-<script src="{{ url_for('static', filename='dist/js/sells-min.js') }}"></script>
+<script src="{{ url_for('static', filename='dist/js/sells-min.js') }}?2323"></script>
 {% endblock %}
