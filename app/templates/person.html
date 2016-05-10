@@ -37,7 +37,7 @@
 
 {% block script %}
 <script>
-    var openid = {{ openid }};
+    var openid = "{{ openid }}";
 </script>
 <script src="{{ url_for('static', filename='dist/js/person-min.js') }}"></script>
 {% endblock %}
