@@ -4,7 +4,7 @@ from datetime import datetime
 import time
 import hashlib
 import random
-from flask import jsonify, request
+from flask import jsonify, request, render_template
 from . import api
 from .. import mongo
 from werkzeug import secure_filename
@@ -309,7 +309,7 @@ def getGood(openid, goodid):
                 return jsonify(owner=owner, good=good)
     except Exception as e:
         print(e)
-        return jsonify(errMsg='Internal Error'), 500
+        return render_template('404.html')
 
 
 # 举报某个商品，修改商品的 status 状态，并将goodid放入 reports 集合中
