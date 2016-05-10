@@ -3,11 +3,20 @@
 {% block title %}你来晚了{% endblock %}
 
 {% block head %}
+<style>
+    .late {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+    }
+</style>
 {% endblock %}
 
 {% block content %}
-<div>
+<div class="late">
     <img src="{{ url_for('static', filename='dist/img/Watermelon-96.png') }}" alt="西瓜">
-    <p>你来晚了:(&nbsp;闲置已经被带走了</p>
+    <p>你来晚了:(<br>闲置已经被带走了</p>
 </div>
 {% endblock %}
