@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 // 给可回复的 li 标签增加点击事件
                 $$('#goo-ask').addEventListener('click', function (event) {
                     if (event.target.getAttribute('data-replyid') === ownerOpenid) {
+                        location.href = location.href + '#ask';
                         // 弹出提问输入框
                         $$('.ask-input').style.display = 'block';
                         $$('.ask-input .weui_textarea').setAttribute('placeholder', `回复${event.target.getAttribute('data-usernickname')}:`)
