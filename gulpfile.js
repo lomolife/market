@@ -38,7 +38,7 @@ gulp.task('es6toes5', () => {
 });
 
 gulp.task('estojs', () => {
-    var files = ['index', 'check', 'good', 'new', 'push', 'search', 'sells'];
+    var files = ['index', 'check', 'good', 'new', 'push', 'search', 'sells', 'person'];
     files.forEach( function(file, index) {
         var input = 'app/static/dist/js/es5/' + file + '.js';
         var output = file + '.js';

@@ -1,0 +1,43 @@
+{% extends 'layouts.html' %}
+
+{% block title %}用户信息{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/index.css') }}?22313">
+<style>
+    .index-banner-head {
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 15px 15px;
+    }
+    .index-banner-head > p {
+        padding: 0 15px;
+        line-height: 32px;
+        text-align: right;
+        -webkit-transform: translate(0, 5px);
+        transform: translate(0, 5px);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- 顶部 -->
+<div class="index-banner">
+    <div class="index-banner-head">
+        <p>{{ nickname }}<br>{{ sellNum }}个闲置</p>
+        <!-- 头像 -->
+        <img src="{{ headimgurl }}" alt="头像" data-dialog="check">
+    </div>
+</div>
+<!-- 商品列表 -->
+<ul class="goods">
+    <!-- 待添加的商品 -->
+</ul>
+{% endblock %}
+
+{% block script %}
+<script>
+    var openid = {{ openid }};
+</script>
+<script src="{{ url_for('static', filename='dist/js/person-min.js') }}"></script>
+{% endblock %}

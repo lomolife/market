@@ -165,3 +165,38 @@ def message():
                                 i['openid'] = good['id'][0:-14]
                                 response.append(i)
         return render_template('message.html', response=response)
+
+
+# 个人主页
+@user.route('/person/<openid>')
+def person(openid):
+    if session['openid']:
+        try:
+            # 获得商品ID序列和头像的文档
+            Users = mongo.db.users.find_one_or_404(
+                {'wechat.openid': session['openid']},
+                {'goods': 1, 'wechat': 1, 'check': 1, 'reply': 1, '_id': 0}
+            )
+            # 获得所有商品的文档
+            Goods = mongo.db.goods.find_one_or_404(
+                {},
+                {'goods': 1, '_id': 0}
+            )
+            goodsID = Users.get('goods', [])
+            goodsAll = Goods.get('goods', [])
+            headimgurl = Users.get('wechat', []).get('headimgurl', '')
+            nickname = Users.get('wechat', []).get('nickname', '')
+            # 计算未下架商品个数
+            sellNum = 0
+            # 遍历商品计数
+            for good in goodsAll:
+                if good['status'] != '下架' and good['id'] in goodsID:
+                    sellNum = sellNum + 1
+            return render_template(
+                'person.html', openid=openid,
+                nickname=nickname, headimgurl=headimgurl, sellNum=sellNum
+            )
+        except Exception as e:
+            print(e)
+    else:
+        return redirect('wechat.index')
