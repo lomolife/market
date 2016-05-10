@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                     }
                 });
             });
-        } else {
+        } else if (xhr.readyState === 4 && xhr.status === 500) {
             location.href = '/market/404';
         }
     };
