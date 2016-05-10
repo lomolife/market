@@ -3,7 +3,7 @@
 {% block title %}学生市场{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/new.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/new.css') }}?232">
 {% endblock %}
 
 {% block content %}
@@ -29,5 +29,5 @@
 <script>
     var openid = "{{ session['openid'] }}";
 </script>
-<script src="{{ url_for('static', filename='dist/js/new-min.js') }}"></script>
+<script src="{{ url_for('static', filename='dist/js/new-min.js') }}?232"></script>
 {% endblock %}
