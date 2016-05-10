@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 $$('.goo-tags').appendChild(li);
             });
             $$('.goo-owner img').src = owner.headimgurl;
-            $$('.goo-owner>a').href = '/market/user/' + openid;
+            $$('.goo-owner>a').href = '/market/user/person' + openid;
             $$('.goo-owner-name').innerText = owner.nickname;
             if (owner.sex == 1) {
                 $$('#goo-owner-sex').className = 'ui-icon-male';
