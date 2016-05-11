@@ -260,6 +260,26 @@ export function pushForm(event, fileList) {
         }
         return;
     }
+    // 判断地址是否选择了
+    if ($('.push-address-value').innerText === '交易地点') {
+        $('.push-tip').style.display = 'block';
+        $('#push-tip').innerHTML = '请输入交易地点';
+        setTimeout(function () {
+            $('.push-tip').style.display = 'none';
+            $('#push-tip').innerHTML = "";
+        }, 1500);
+        return;
+    }
+    // 判断标签是否选择了
+    if ($('.push-tag-value').innerText === '最多选择五个标签') {
+        $('.push-tip').style.display = 'block';
+        $('#push-tip').innerHTML = '请输入交易地点';
+        setTimeout(function () {
+            $('.push-tip').style.display = 'none';
+            $('#push-tip').innerHTML = "";
+        }, 1500);
+        return;
+    }
     // 给表单增加地址
     let address = $('.push-address-value').innerText;
     // 获取 tag
@@ -290,6 +310,11 @@ export function pushForm(event, fileList) {
                      $('#toast').style.display = 'none';
                      location.href = 'index';
                 }, 2000);
+            } else {
+                $('#loadingToast').style.display = 'block';
+                setTimeout(function () {
+                     $('#loadingToast').style.display = 'none';
+                }, 1500);
             }
         };
         xhr.send(form);

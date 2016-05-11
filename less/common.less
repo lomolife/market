@@ -192,6 +192,9 @@ a {
         width: 100%;
         height: 100%;
         display: block;
+        &:active {
+            background: rgba(0, 0, 0, 0.25);
+        }
     }
 }
 // 有关商品发布的组件
@@ -396,7 +399,7 @@ a {
 .ask-item-body-content {
     padding-top: 5px;
 }
-.ask-item-body-content > li:hover {
+.ask-item-body-content > li:active {
     background: #eee;
 }
 .ask-item-image {
