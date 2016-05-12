@@ -216,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         $$('.ask-input').style.display = 'none';
                         location.replace(document.referrer);
+                        location.reload(true);
                     }
                 };
                 xhr.send(form);
