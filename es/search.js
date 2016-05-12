@@ -597,6 +597,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     window.onhashchange = function(){
         if (!/#/.test(location.href)) {
+            $('.push-tag-search .weui_input').value = '';
             // 显示搜索选项，隐藏标签超市
             $('.search-box').style.display = 'none';
             $('.tag-market').style.display = 'block';
