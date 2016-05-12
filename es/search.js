@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let $ = selectors => {
         return document.querySelector(selectors);
     };
+    $('.search-box').style.display = 'none';
+    $('.tag-market').style.display = 'block';
     // 得到父标签数组和子标签数组
     let keys = Object.keys(totalTags);
     let values = Object.values(totalTags);
@@ -53,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 点击 push-tag-result 中的 li 标签的事件代理
     $('.push-tag-result').addEventListener('click', function (event) {
         if (event.target.tagName.toUpperCase() === 'LI') {
+            location.href = location.href + '#' + event.target.innerText;
             // 显示搜索选项，隐藏标签超市
             $('.search-box').style.display = 'block';
             $('.tag-market').style.display = 'none';
