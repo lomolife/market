@@ -149,18 +149,30 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 $$('#goo-sms').setAttribute('href', `sms:${good.phone}?body=你好，我在学生市场看到你发布的闲置，想咨询一下`);
             }
             // QQ号码被复制
-            $$('#goo-qq').setAttribute('data-clipboard-text', good.qq);
-            $$('#goo-qq').addEventListener('click', function (event) {
-                let clipboard = new Clipboard('#goo-qq');
-                clipboard.on('success', function(e) {
-                    // 复制成功则显示复制成功的弹窗
-                    $$('#toast').style.display = 'block';
-                    // 2 秒后消失
-                    setTimeout(function () {
-                        $$('#toast').style.display = 'none';
-                    }, 2000);
+            if (good.qq) {
+                $$('#goo-qq').setAttribute('data-clipboard-text', good.qq);
+                $$('.copy-qq > p').innerHTML = good.qq;
+                $$('#goo-qq').addEventListener('click', function (event) {
+                    let clipboard = new Clipboard('#goo-qq');
+                    clipboard.on('success', function(e) {
+                        // 复制成功则显示复制成功的弹窗
+                        $$('#toast').style.display = 'block';
+                        // 2 秒后消失
+                        setTimeout(function () {
+                            $$('#toast').style.display = 'none';
+                        }, 2000);
+                    });
+                    clipboard.on('error', function(e) {
+                        $$('.copy-qq').style.display = 'flex';
+                        $$('.copy-qq').onclick = function (event) {
+                            if (event.target.tagName.toLowerCase() !== 'p') {
+                                $$('.copy-qq').style.display = 'none';
+                            }
+                        }
+                    });
                 });
-            });
+            }
+            
             // 给我想要绑定事件
             $$('.goo-want').addEventListener('click', function (event) {
                 // 显示actionsheet

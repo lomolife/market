@@ -273,7 +273,7 @@ export function pushForm(event, fileList) {
     // 判断标签是否选择了
     if ($('.push-tag-value').innerText === '最多选择五个标签') {
         $('.push-tip').style.display = 'block';
-        $('#push-tip').innerHTML = '请输入交易地点';
+        $('#push-tip').innerHTML = '请输入标签';
         setTimeout(function () {
             $('.push-tip').style.display = 'none';
             $('#push-tip').innerHTML = "";
