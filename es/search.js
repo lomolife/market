@@ -27,8 +27,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let $ = selectors => {
         return document.querySelector(selectors);
     };
-    $('.search-box').style.display = 'none';
-    $('.tag-market').style.display = 'block';
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        $('.search-box').style.display = 'none';
+        $('.tag-market').style.display = 'block';
+    });
     // 得到父标签数组和子标签数组
     let keys = Object.keys(totalTags);
     let values = Object.values(totalTags);
