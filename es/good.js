@@ -171,6 +171,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
                         }
                     });
                 });
+            } else {
+                $$('#goo-qq').style.display = 'none';
             }
             
             // 给我想要绑定事件
