@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', function () {
             xhr.send();
         }
     });
-    window.onbeforeunload = function(){
+    window.onhashchange = function(){
         // 显示搜索选项，隐藏标签超市
         $('.search-box').style.display = 'none';
         $('.tag-market').style.display = 'block';
