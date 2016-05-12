@@ -231,7 +231,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
     });
     // 返回键
     $$('.back').addEventListener('click', function (event) {
-        if (document.referrer !== 'http://stuzone.com:8000/market/user/sells') {
+        if (/^http:\/\/stuzone.com:8000/.test(document.referrer)) {
+            history.back();
+        } else {
             location.href = 'http://stuzone.com:8000/market/user/index';
         }
     });
