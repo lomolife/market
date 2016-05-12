@@ -270,6 +270,16 @@ export function pushForm(event, fileList) {
         }, 1500);
         return;
     }
+    // 判断手机和QQ是否填写
+    if (document.forms[0].phone.value === '' && document.forms[0].qq.value === '') {
+        $('.push-tip').style.display = 'block';
+        $('#push-tip').innerHTML = '请至少填写手机和QQ中的一项';
+        setTimeout(function () {
+            $('.push-tip').style.display = 'none';
+            $('#push-tip').innerHTML = "";
+        }, 1500);
+        return;
+    }
     // 判断标签是否选择了
     if ($('.push-tag-value').innerText === '最多选择五个标签') {
         $('.push-tip').style.display = 'block';
@@ -305,6 +315,7 @@ export function pushForm(event, fileList) {
         xhr.open('POST', `/market/api/goods/create/${openid}`);
         xhr.onreadystatechange = function ready () {
             if (xhr.readyState === 4 && xhr.status === 200) {
+                $('#loadingToast').style.display = 'none';
                 $('#toast').style.display = 'block';
                 setTimeout(function () {
                      $('#toast').style.display = 'none';
@@ -312,9 +323,6 @@ export function pushForm(event, fileList) {
                 }, 2000);
             } else {
                 $('#loadingToast').style.display = 'block';
-                setTimeout(function () {
-                     $('#loadingToast').style.display = 'none';
-                }, 1500);
             }
         };
         xhr.send(form);
@@ -323,11 +331,14 @@ export function pushForm(event, fileList) {
         xhr.open('PUT', `/market/api/good/all/${openid}/${goodid}`);
         xhr.onreadystatechange = function ready () {
             if (xhr.readyState === 4 && xhr.status === 200) {
+                $('#loadingToast').style.display = 'none';
                 $('#toast').style.display = 'block';
                 setTimeout(function () {
                      $('#toast').style.display = 'none';
                      location.href = 'index';
                 }, 2000);
+            } else {
+                $('#loadingToast').style.display = 'block';
             }
         };
         xhr.send(form);

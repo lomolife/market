@@ -55,14 +55,14 @@
             <div class="weui_cell">
                 <div class="weui_cell_hd"><label class="weui_label">手机</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" name="phone" type="number" pattern="[0-9]*" placeholder="请输入你的手机号（选填）" required="请输入正确的手机号">
+                    <input class="weui_input" name="phone" type="number" pattern="[0-9]*" placeholder="请输入你的手机号">
                 </div>
                 <div class="weui_cell_ft" style="opacity: 0;width: 16px;"><i class="ui-icon-close" style="line-height: 20px;"></i></div>
             </div>
             <div class="weui_cell">
                 <div class="weui_cell_hd"><label class="weui_label">QQ</label></div>
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input class="weui_input" type="number" name="qq" pattern="[0-9]*" placeholder="请输入你的QQ号（选填）" required="请输入正确的QQ号">
+                    <input class="weui_input" type="number" name="qq" pattern="[0-9]*" placeholder="请输入你的QQ号">
                 </div>
                 <div class="weui_cell_ft" style="opacity: 0;width: 16px;"><i class="ui-icon-close" style="line-height: 20px;"></i></div>
             </div>
@@ -129,7 +129,7 @@
     </div>
 </div>
 <!-- 加载中 -->
-<div id="loadingToast" class="weui_loading_toast" style="display:none;">
+<div id="loadingToast" class="weui_loading_toast" style="display:none;position: relative;z-index: 500;">
     <div class="weui_mask_transparent"></div>
     <div class="weui_toast">
         <div class="weui_loading">
