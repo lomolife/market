@@ -27,10 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let $ = selectors => {
         return document.querySelector(selectors);
     };
-    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-        $('.search-box').style.display = 'none';
-        $('.tag-market').style.display = 'block';
-    });
     // 得到父标签数组和子标签数组
     let keys = Object.keys(totalTags);
     let values = Object.values(totalTags);
@@ -599,4 +595,9 @@ document.addEventListener('DOMContentLoaded', function () {
             xhr.send();
         }
     });
+    window.onbeforeunload = function(){
+        // 显示搜索选项，隐藏标签超市
+        $('.search-box').style.display = 'none';
+        $('.tag-market').style.display = 'block';
+    }
 });
