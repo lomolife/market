@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 xhr.onreadystatechange = function (event) {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         $$('.ask-input').style.display = 'none';
-                        history.back();
+                        location.replace(document.referrer);
                     }
                 };
                 xhr.send(form);
