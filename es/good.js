@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     let $$ = selectors => {
         return document.querySelector(selectors);
     }
+    $$('.ask-input').style.display = 'none';
     // 判断用户设备
     let deviceAgent = navigator.userAgent.toLowerCase();
     let agendID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
@@ -198,6 +199,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     // 给提问按钮绑定事件
     if (ownerOpenid !== openid) {
         $$('.goo-question').addEventListener('click', function (event) {
+            location.href += '#ask';
             // 弹出提问输入框
             $$('.ask-input').style.display = 'block';
             // 发送按钮事件绑定
@@ -213,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 xhr.onreadystatechange = function (event) {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         $$('.ask-input').style.display = 'none';
+                        history.back();
                     }
                 };
                 xhr.send(form);
