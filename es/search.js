@@ -596,8 +596,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     window.onhashchange = function(){
-        // 显示搜索选项，隐藏标签超市
-        $('.search-box').style.display = 'none';
-        $('.tag-market').style.display = 'block';
+        if (!/#/.test(location.href)) {
+            // 显示搜索选项，隐藏标签超市
+            $('.search-box').style.display = 'none';
+            $('.tag-market').style.display = 'block';
+        }
     }
 });
