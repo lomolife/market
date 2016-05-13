@@ -314,6 +314,7 @@ export function pushForm(event, fileList) {
         let xhr = new XMLHttpRequest();
         xhr.open('POST', `/market/api/goods/create/${openid}`);
         xhr.onreadystatechange = function ready () {
+            $('#loadingToast').style.display = 'block';
             if (xhr.readyState === 4 && xhr.status === 200) {
                 $('#loadingToast').style.display = 'none';
                 $('#toast').style.display = 'block';
@@ -321,8 +322,6 @@ export function pushForm(event, fileList) {
                      $('#toast').style.display = 'none';
                      location.href = 'index';
                 }, 2000);
-            } else {
-                $('#loadingToast').style.display = 'block';
             }
         };
         xhr.send(form);
@@ -330,6 +329,7 @@ export function pushForm(event, fileList) {
         let xhr = new XMLHttpRequest();
         xhr.open('PUT', `/market/api/good/all/${openid}/${goodid}`);
         xhr.onreadystatechange = function ready () {
+            $('#loadingToast').style.display = 'block';
             if (xhr.readyState === 4 && xhr.status === 200) {
                 $('#loadingToast').style.display = 'none';
                 $('#toast').style.display = 'block';
@@ -337,8 +337,6 @@ export function pushForm(event, fileList) {
                      $('#toast').style.display = 'none';
                      location.href = 'index';
                 }, 2000);
-            } else {
-                $('#loadingToast').style.display = 'block';
             }
         };
         xhr.send(form);
