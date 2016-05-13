@@ -25,37 +25,16 @@ def create(openid):
     date = datetime.now()
     # 格式化为数据库存储字符串
     dateString = date.strftime("%Y-%m-%d %H:%M")
-    # 格式化为文件夹名
-    dateFolder = date.strftime("%Y-%m-%d")
-    # 将用户提交的数据格式化
-    # 创建 文件存储地址
-    path = config['default'].UPLOAD_FOLDER + \
-        '/{}/{}'.format(openid, dateFolder)
-    # 数据库存储格式地址
-    paths = []
-    # 检测文件夹是否存在
-    if os.path.exists(path):
-        pass
-    else:
-        # 不存在就创建一个
-        os.makedirs(path)
-    # 存储文件
-    for file in request.files.getlist('picture'):
-        if file and allowed_file(file.filename):
-            filename = hashlib.sha1((secure_filename(file.filename) + str(
-                random.randint(1, 1000))).encode()).hexdigest()
-            paths.append('/market/static/uploads/{}/{}/{}'.format(
-                openid, dateFolder, filename
-            ))
-            file.save(os.path.join(path, filename))
-    print('1', request.files.getlist('picture'))
     print('2', request.form['picture'])
+    # 列表化
+    pictures = request.form['picture'].split(',')
+    print(pictures)
     # 数据库写入的对象生成
     form = {}
     for i in ['describe', 'address', 'price', 'cost', 'phone', 'qq']:
         form[i] = request.form[i]
     form['tags'] = request.form['tags'].split(',')
-    form['picture'] = list(set(paths))
+    form['picture'] = pictures
     form['date'] = dateString
     form['status'] = '上架'
     form['id'] = openid + date.strftime("%Y%m%d%H%M%S")
