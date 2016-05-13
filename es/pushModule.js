@@ -189,38 +189,37 @@ export function chooseTag (event, totalTags) {
 // 图片选择事件，参数为事件，数量，文件存储对象
 export function addPicture (event, number, fileList) {
     let that = this;
-    let files = event.target.files;
-    for (var i = 0; i < files.length; i++) {
-        let reader = new FileReader();
-        reader.onload = (function (i) {
-            return function (event) {
-                let result = event.target.result;
-                if (i < number.value) {
-                    let element = document.createElement('li');
-                    if (i === 0 && $('.push-picture').innerText === '') {
-                        element.className = 'weui_uploader_file weui_uploader_status';
-                        element.innerHTML = '<i class="material-icons">close</i><div class="weui_uploader_status_content">首图</div>';
-                    } else {
-                        element.className = 'weui_uploader_file';
-                        element.innerHTML = '<i class="material-icons">close</i>';
-                    }
-                    element.style.backgroundImage = `url(${result})`;
-                    // 加入到 push-picture 中
-                    $('.push-picture').appendChild(element);
-                    // 加入到存储对象中
-                    fileList.push(files[i]);
-                }
-                if (i === files.length - 1) {
-                    number.value = number.value - files.length;
-                }
-                if (number.value <= 0) {
-                    $('.push-picture-button').style.display = 'none';
-                    number.value = 0;
-                }
-            };
-        })(i);
-        reader.readAsDataURL(files[i]);
-    }
+    let file = event.target.files[0];
+    let reader = new FileReader();
+    reader.onload = function (event) {
+            let result = event.target.result;
+            let element = document.createElement('li');
+            if (fileList.length === 0) {
+                element.className = 'weui_uploader_file weui_uploader_status';
+                element.innerHTML = '<i class="material-icons">close</i><div class="weui_uploader_status_content">首图</div>';
+            } else {
+                element.className = 'weui_uploader_file';
+                element.innerHTML = '<i class="material-icons">close</i>';
+            }
+            element.style.backgroundImage = `url(${result})`;
+            // 加入到 push-picture 中
+            $('.push-picture').appendChild(element);
+            // 加入到存储对象中
+            fileList.push(result);
+            if (flieList.length === 4) {
+                $('.push-picture-button').style.display = 'none';
+            }
+            console.log(fileList);
+            // if (i === files.length - 1) {
+            //     number.value = number.value - files.length;
+            // }
+            // if (number.value <= 0) {
+            //     $('.push-picture-button').style.display = 'none';
+            //     number.value = 0;
+            // }
+    };
+    reader.readAsDataURL(file);
+
 }
 
 // 表单提交
