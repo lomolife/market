@@ -20,7 +20,7 @@ export function generateGood (message, owner) {
                 </div>
                 <a href="/market/user/good/${owner.openid}/${message.id}" class="good-link">
                     <div class="ui-row-flex">
-                        <div class="ui-col" style="background-image: url(${message.picture[0]});background-size: cover;">
+                        <div class="ui-col" style="background-image: url(${message.picture[0]});background-size: cover;background-position: center center;">
                         </div>
                         <div class="ui-col ui-col-2 ui-row-flex ui-row-flex-ver good-content">
                             <div class="ui-col-2" style="height: 61px;">
