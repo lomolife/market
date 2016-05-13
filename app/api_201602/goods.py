@@ -27,7 +27,7 @@ def create(openid):
     dateString = date.strftime("%Y-%m-%d %H:%M")
     print('2', request.form['picture'])
     # 列表化
-    pictures = request.form['picture'].split(',')
+    pictures = request.form['picture'].split(',data:image')
     print(pictures)
     # 数据库写入的对象生成
     form = {}
