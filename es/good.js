@@ -134,20 +134,25 @@ document.addEventListener('DOMContentLoaded', function (event) {
             });
             }
             // 打电话被加载
-            $$('#goo-phone').setAttribute('href', 'tel:'+good.phone);
-            // 短信被加载
-            if (~agendID.indexOf('iphone')) {
-                // 判断 iOS 版本
-                let bool = Boolean(navigator.userAgent.match(/OS [8-9]_\d[_\d]* like Mac OS X/i));
-                if (bool) {
-                    // 如果是 iOS 8 以上
-                    $$('#goo-sms').setAttribute('href', `sms:${good.phone}&body=你好，我在学生市场看到你发布的闲置，想咨询一下`);
+            if (good.phone) {
+                $$('#goo-phone').setAttribute('href', 'tel:'+good.phone);
+                // 短信被加载
+                if (~agendID.indexOf('iphone')) {
+                    // 判断 iOS 版本
+                    let bool = Boolean(navigator.userAgent.match(/OS [8-9]_\d[_\d]* like Mac OS X/i));
+                    if (bool) {
+                        // 如果是 iOS 8 以上
+                        $$('#goo-sms').setAttribute('href', `sms:${good.phone}&body=你好，我在学生市场看到你发布的闲置，想咨询一下`);
+                    } else {
+                        $$('#goo-sms').setAttribute('href', `sms:${good.phone};body=你好，我在学生市场看到你发布的闲置，想咨询一下`);
+                    }
+                    
                 } else {
-                    $$('#goo-sms').setAttribute('href', `sms:${good.phone};body=你好，我在学生市场看到你发布的闲置，想咨询一下`);
+                    $$('#goo-sms').setAttribute('href', `sms:${good.phone}?body=你好，我在学生市场看到你发布的闲置，想咨询一下`);
                 }
-                
             } else {
-                $$('#goo-sms').setAttribute('href', `sms:${good.phone}?body=你好，我在学生市场看到你发布的闲置，想咨询一下`);
+                $$('#goo-phone').style.display = 'none';
+                $$('#goo-sms').style.display = 'none';
             }
             // QQ号码被复制
             if (good.qq) {
