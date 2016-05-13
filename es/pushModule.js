@@ -281,7 +281,7 @@ export function pushForm(event, fileList) {
         return;
     }
     // 判断标签是否选择了
-    if ($('.push-tag-value').innerText === '最多选择五个标签') {
+    if ($('.push-tag-value').innerText === '最多选择五个标签' || $('.push-tag-value').innerText === '') {
         $('.push-tip').style.display = 'block';
         $('#push-tip').innerHTML = '请输入标签';
         setTimeout(function () {
