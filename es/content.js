@@ -24,10 +24,10 @@ export function generateGood (message, owner) {
                             <img class="good-banner" src="${message.picture[0]}" alt="首图">
                         </div>
                         <div class="ui-col ui-col-2 ui-row-flex ui-row-flex-ver good-content">
-                            <div class="ui-col-2">
+                            <div class="ui-col-2" style="height: 24px;">
                                 <h1 class="ui-nowrap-multi ui-flex-pack-start ui-col-3 good-topic">${message.describe}</h1>
                             </div>
-                            <h2 class="ui-col good-price">¥${message.price}<i class="good-cost">¥${message.cost}</i></h2>
+                            <h2 class="ui-col good-price" style="height: 24px;">¥${message.price}<i class="good-cost">¥${message.cost}</i></h2>
                         </div>
                     </div>
                     <ul class="ui-justify-flex good-message">
