@@ -206,7 +206,7 @@ export function addPicture (event, number, fileList) {
             $('.push-picture').appendChild(element);
             // 加入到存储对象中
             fileList.push(result);
-            if (flieList.length === 4) {
+            if (fileList.length === 4) {
                 $('.push-picture-button').style.display = 'none';
             }
             console.log(fileList);
