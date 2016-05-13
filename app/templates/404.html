@@ -16,12 +16,35 @@
         padding-top: 10px;
         line-height: 32px;
     }
+    .back {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 20;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 24px;
+        font-size: 34px;
+        color: white;
+    }
 </style>
 {% endblock %}
 
 {% block content %}
+<!-- 返回按钮 -->
+<i class="material-icons back">keyboard_arrow_left</i>
 <div class="late">
     <img src="{{ url_for('static', filename='dist/img/Watermelon-96.png') }}" alt="西瓜">
     <p>你来晚了:(<br>闲置已经被带走了</p>
 </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    window.onload = function () {
+        var back = document.querySelector('.back');
+        back.onclick = function () {
+            history.go(-2);
+        }
+    }
+</script>
 {% endblock %}
