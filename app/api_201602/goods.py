@@ -29,7 +29,7 @@ def create(openid):
     # 列表化
     pictures = request.form['picture'].split(',data:image')
     for i in pictures:
-        pictures[i] = 'data:image' + pictures[i]
+        pictures[pictures.index(i)] = 'data:image' + i
     print(pictures)
     # 数据库写入的对象生成
     form = {}
