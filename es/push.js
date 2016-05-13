@@ -98,9 +98,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 );
             // 删除 flielist 里面的
             fileList.splice(index, 1);
-            // number.value可以增加一个
-            number.value++;
-            if (number.value > 0) {
+            if (fileList.length < 4) {
                 $('.push-picture-button').style.display = 'block';
             }
         }
