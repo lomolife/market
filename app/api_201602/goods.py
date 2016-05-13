@@ -48,6 +48,8 @@ def create(openid):
                 openid, dateFolder, filename
             ))
             file.save(os.path.join(path, filename))
+    print('1', request.files.getlist('picture'))
+    print('2', request.form['picture'])
     # 数据库写入的对象生成
     form = {}
     for i in ['describe', 'address', 'price', 'cost', 'phone', 'qq']:
